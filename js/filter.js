@@ -27,7 +27,6 @@ class FilterBlocker {
     filterAllTweets() {
         var i = 0;
         let tweets = $(".tweet-text").not(".hide-k4eRo0").not(".checked-k4eRo0");
-        console.log('len', tweets.length);
         tweets.each((i, elem) => {
             let text = elem.innerText;
             if (this.filterRegex.test(text)) {
@@ -43,8 +42,6 @@ let regex = chrome.storage.sync.get({
         regex: "Delete this. And then input text you want to filter by harukaeru"
     }, function(items) {
         let re = new RegExp(items.regex);
-        console.log("REGEX");
-        console.log(re);
         let filterBlocker = new FilterBlocker(re);
         filterBlocker.filterAllTweets();
 

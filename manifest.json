@@ -10,7 +10,7 @@
   },
   "content_scripts": [{
     "matches": ["https://twitter.com/*"],
-    "js": ["js/jquery.js", "js/filter.js"],
+    "js": ["vendor/jquery.js", "js/filter.js"],
     "css": ["css/style.css"]
   }],
   "permissions": [
