@@ -1,0 +1,45 @@
+<html>
+<style>
+.l {
+    width: 80%
+}
+.r {
+    width: 10%;
+}
+</style>
+<body>
+    <h2>Input regex(JavaScript) here to filter tweets.</h2>
+    <input type="text" class="l" id="regex">
+    <button class="r" id="save">Save</button>
+
+    <h2>Filter tests for text (Only tests, If you want to save regex you enter, you should press the "Save" button.)</h2>
+    <div><input type="text" class="l test" id="t1"></input><span></span></div>
+    <div><input type="text" class="l test" id="t2"></input><span></span></div>
+    <div><input type="text" class="l test" id="t3"></input><span></span></div>
+    <div><input type="text" class="l test" id="t4"></input><span></span></div>
+    <div><input type="text" class="l test" id="t5"></input><span></span></div>
+    <div><input type="text" class="l test" id="t6"></input><span></span></div>
+    <div><input type="text" class="l test" id="t7"></input><span></span></div>
+    <div><input type="text" class="l test" id="t8"></input><span></span></div>
+    <div><input type="text" class="l test" id="t9"></input><span></span></div>
+    <div><input type="text" class="l test" id="t10"></input><span></span></div>
+    <button id="test">Test</button>
+    <br />
+    <br />
+    <br />
+    <hr>
+    <h2>Regex examples</h2>
+    <ul>
+        <li>42</li>
+        <li>All your bases are belong to us</li>
+        <li>shit|fuck|bastard</li>
+        <li>[mM]other ?[fF]ucker</li>
+        <li>[mM]ake \w* [gG]reat [aA]gain</li>
+        <li>42|All your bases are belong to us|shit|fuck|bastard|[mM]other ?[fF]ucker|[mM]ake \w* [gG]reat [aA]gain</li>
+    </ul>
+    <hr>
+    <h4>If you didn't know regex, you should watch the official page. -> <a href="https://www.google.com">From Here</a></h4>
+    <h4>For developers, the source code is in <a href="https://github.com/harukaeru/FilterBlockTweets">My GitHub Page</a>. I wait for your pull requests :)</h4>
+</body>
+<script src="js/options.js"></script>
+</html>

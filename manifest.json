@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "FilterBlockTweets",
+  "description": "Filter Block Tweets :)",
+  "version": "1.0",
+  "options_ui": {
+      "page": "options.html",
+      "chrome_style": true,
+      "open_in_tab": true
+  },
+  "content_scripts": [{
+    "matches": ["https://twitter.com/*"],
+    "js": ["js/jquery.js", "js/filter.js"],
+    "css": ["css/style.css"]
+  }],
+  "permissions": [
+      "storage"
+  ]
+}
