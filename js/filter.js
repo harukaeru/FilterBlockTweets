@@ -88,15 +88,15 @@ chrome.storage.sync.get({
         let tweetWalker = new TweetWalker(filterRegex);
 
         // Alias
-        let walk = tweetWalker.walk;
-        walk();
+        let w = tweetWalker.walk;
+        w();
 
         $("#timeline").on('click', function() {
-            walk();
+            w();
         });
 
         $(window).scrollEnd(function(){
-            walk();
+            w();
         }, 100);
     }
 );
