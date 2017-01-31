@@ -8,11 +8,12 @@ $.fn.scrollEnd = function(callback, timeout) {
   });
 };
 
-function appendClass(elem, className) {
-    elem.className += ` ${className}`;
+HTMLElement.prototype.appendClass = function(className) {
+    this.className += ` ${className}`;
 }
 
-function getAncestorElem(elem, generationNum) {
+HTMLElement.prototype.getAncestorElem = function(generationNum) {
+    let elem = this;
     for (let i = 0; i < generationNum; i++) {
         elem = elem.parentElement;
     }
@@ -31,19 +32,19 @@ class TweetMarkManager {
     }
 
     appendCheckedMark(tweet) {
-        appendClass(tweet, this.CHECKED_MARK);
+        tweet.appendClass(this.CHECKED_MARK);
     }
 
     appendHiddenMark(tweet) {
-        appendClass(tweet, this.HIDDEN_MARK);
+        tweet.appendClass(this.HIDDEN_MARK);
 
         // Hide wrapper, too.
         let tweetWrapper = this.getTweetWrapper(tweet);
-        appendClass(tweetWrapper, this.HIDDEN_MARK);
+        tweetWrapper.appendClass(this.HIDDEN_MARK);
     }
 
     getTweetWrapper(tweet) {
-        return getAncestorElem(tweet, 3);
+        return tweet.getAncestorElem(3);
     }
 }
 
@@ -70,9 +71,7 @@ class TweetWalker {
     walk() {
         let $tweets = this.markManager.excludeMarkedTweets(this.getAllTweets());
         $tweets.each((__, tweet) => {
-            let tweetTextContent = tweet.innerText;
-
-            if (this.tweetContentInspector.detect(tweetTextContent)) {
+            if (this.tweetContentInspector.detect(tweet.innerText)) {
                 this.markManager.appendHiddenMark(tweet);
             }
 
@@ -90,7 +89,6 @@ chrome.storage.sync.get({
 
         // Alias
         let walk = tweetWalker.walk();
-
         walk();
 
         $("#timeline").on('click', function() {
