@@ -21,7 +21,7 @@ function getAncestorElem(elem, generationNum) {
 
 class TweetMarkManager {
     constructor() {
-        // Marks don't have meanings at all, but exist to identify.
+        // Mark names don't have meanings at all, but exist to identify.
         this.HIDDEN_MARK = "hidden-k4eRo0"
         this.CHECKED_MARK = "checked-k4eRo0"
     }
