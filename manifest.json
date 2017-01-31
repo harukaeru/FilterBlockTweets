@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "FilterBlockTweets",
   "description": "Filter Block Tweets :)",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "options_ui": {
       "page": "options.html",
       "chrome_style": true,

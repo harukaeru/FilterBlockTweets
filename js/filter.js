@@ -27,7 +27,7 @@ class TweetMarkManager {
         this.CHECKED_MARK = "checked-k4eRo0"
     }
 
-    excludeMarkedTweets($tweets) {
+    excludeCheckedMarkTweets($tweets) {
         return $tweets.not(`.${this.CHECKED_MARK}`);
     }
 
@@ -48,7 +48,7 @@ class TweetMarkManager {
     }
 }
 
-class TweetContentInspector {
+class TextInspector {
     constructor(filterRegex) {
         this.filterRegex = filterRegex;
     }
@@ -61,7 +61,7 @@ class TweetContentInspector {
 class TweetWalker {
     constructor(filterRegex) {
         this.markManager = new TweetMarkManager();
-        this.tweetContentInspector = new TweetContentInspector(filterRegex);
+        this.textInspector = new TextInspector(filterRegex);
     }
 
     getAllTweets() {
@@ -69,9 +69,9 @@ class TweetWalker {
     }
 
     walk() {
-        let $tweets = this.markManager.excludeMarkedTweets(this.getAllTweets());
+        let $tweets = this.markManager.excludeCheckedMarkTweets(this.getAllTweets());
         $tweets.each((__, tweet) => {
-            if (this.tweetContentInspector.detect(tweet.innerText)) {
+            if (this.textInspector.detect(tweet.innerText)) {
                 this.markManager.appendHiddenMark(tweet);
             }
 
@@ -88,7 +88,7 @@ chrome.storage.sync.get({
         let tweetWalker = new TweetWalker(filterRegex);
 
         // Alias
-        let walk = tweetWalker.walk();
+        let walk = tweetWalker.walk;
         walk();
 
         $("#timeline").on('click', function() {
